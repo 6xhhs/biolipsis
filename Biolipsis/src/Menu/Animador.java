@@ -1,25 +1,33 @@
-package Menu;
+package menu;
+
+import menu.JuegoNuevo;
+import menu.Menu;
 
 public class Animador implements Runnable {
-    private PantallaMenu juego;        //Juego deberÃ­a ser una interface.
+    private Menu menu;        //Juego deberÃ­a ser una interface
+    private JuegoNuevo submenu;
     private boolean corriendo;
     private Thread thread;
     private final int FPS = 60;
     private final int RETARDO = 1000/FPS;
 
-    public Animador(PantallaMenu juego) {
-        this.juego = juego;
+    public Animador(Menu menu) {
+        this.menu = menu;
+    }
+    public Animador(JuegoNuevo submenu) {
+        this.submenu = submenu;
     }
 
     public void run() {
         corriendo = true;
         while(corriendo) {
-            juego.actualizar();                                                 // <-- Indicarle al juego que se actualice a todos los objetos(posicion)
-            juego.dibujar();                                                    // <-- Actualizar la pantalla(dibujar todos los objetos)
-            try {
+                    menu.actualizar();                                                 // <-- Indicarle al juego que se actualice a todos los objetos(posicion)
+                    menu.dibujar();                                                    // <-- Actualizar la pantalla(dibujar todos los objetos)
+                try {
                 Thread.sleep(RETARDO);
             } catch (InterruptedException ex) {}
-            juego.actualizar();                                                 // <-- Indicarle al juego que se actualice a todos los objetos(posicion)
+                menu.actualizar();
+                menu.dibujar();                                                // <-- Indicarle al juego que se actualice a todos los objetos(posicion
         }
     }
 
