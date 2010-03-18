@@ -7,7 +7,6 @@ import javax.microedition.midlet.*;
 public class AppGameCanvas extends MIDlet {
     private Menu lienzo;
 
-
     public AppGameCanvas() {
         lienzo = new Menu(this);
     }
