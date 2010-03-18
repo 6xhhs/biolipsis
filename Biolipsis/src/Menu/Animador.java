@@ -4,7 +4,7 @@ import menu.JuegoNuevo;
 import menu.Menu;
 
 public class Animador implements Runnable {
-    private Menu menu;        //Juego deberÃ­a ser una interface
+    private Menu menu;        //Juego debería ser una interface
     private JuegoNuevo submenu;
     private boolean corriendo;
     private Thread thread;

@@ -68,7 +68,7 @@ public class Imagenes {
             u+=pasos;
         }
     }
-
+    
     public void dibujar(Graphics g) {
         g.drawImage(imagen, x, y, Graphics.TOP|Graphics.LEFT);
     }
