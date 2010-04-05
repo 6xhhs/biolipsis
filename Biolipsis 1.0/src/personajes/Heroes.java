@@ -8,7 +8,7 @@ public class Heroes extends Personaje{
 
     private static final int alto=37;
     private static final int ancho=53;
-    private static final int[] secuenciacaminar={0,0,0,1,1,1,2,2,2,3,3,3};
+    private static final int[] secuenciacaminar={0,0,1,1,2,2,3,3};
 
     public Heroes(String archivito) throws IOException{
         super(archivito, ancho, alto, secuenciacaminar);

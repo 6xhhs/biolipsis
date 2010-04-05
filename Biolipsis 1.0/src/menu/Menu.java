@@ -10,7 +10,7 @@ import javax.microedition.lcdui.game.GameCanvas;
 public class Menu extends GameCanvas implements Animable {
     private Biolipsis midlet;
     private Graphics g;
-    private AnimadorJuego animar;
+    private AnimadorJuego animador;
     private JuegoNuevo menuJuego;
     private Ayuda menuAyuda;
     private Creditos menuCreditos;
@@ -23,8 +23,9 @@ public class Menu extends GameCanvas implements Animable {
                      tituloJuego4, tituloPuntajes,
                      tituloAyuda, tituloCreditos,
                      tituloSalir;
-    private boolean cambiar;
+    private boolean cambio;
     private boolean bandera;
+    private boolean cambio2;
     public boolean terminar;
 
     public Menu(Biolipsis midlet){
@@ -34,7 +35,8 @@ public class Menu extends GameCanvas implements Animable {
         setFullScreenMode(true);
         bandera = false;
         terminar = false;
-        cambiar = false;
+        cambio = false;
+        cambio2 = false;
         menuJuego = null;
         menuAyuda = null;
         menuCreditos = null;
@@ -42,28 +44,28 @@ public class Menu extends GameCanvas implements Animable {
         menuSalir = null;
 
 	try {
-            titulo = new Imagenes("/titulo.jpg",0,33,0);
+            titulo = new Imagenes("/titulo2.png",0,33,0);
             puntajes = new Imagenes("/puntaje.jpg",1,75,125);
             ayuda = new Imagenes("/ayuda.jpg",2,75,125);
             creditos = new Imagenes("/creditos.jpg",3,75,125);
             salir = new Imagenes("/salir.jpg",4,75,125);
             juego = new Imagenes("/juego.jpg",5,75,125);
             highLight = new Imagenes("/highLight.png",5,75,125);
-            fondo = new Imagenes("/fondo.png",6,0,0);
+            fondo = new Imagenes("/fondoJuego.png",6,0,0);
             tituloJuego1 = new Imagenes("/tituloJuego.png",7,60,76);
-            tituloJuego2 = new Imagenes("/tituloCreditos.png",8,135,109);
-            tituloJuego3 = new Imagenes("/tituloCreditos.png",9,25,108);
+            tituloJuego2 = new Imagenes("/tituloNuevo.png",8,135,109);
+            tituloJuego3 = new Imagenes("/tituloNuevo.png",9,25,108);
             tituloJuego4 = new Imagenes("/tituloJuego.png",10,60,185);
-            tituloPuntajes = new Imagenes("/tituloJuego.png",11,60,76);
-            tituloAyuda = new Imagenes("/tituloCreditos.png",12,135,109);
+            tituloPuntajes = new Imagenes("/tituloPuntajes.png",11,60,76);
+            tituloAyuda = new Imagenes("/tituloAyuda.png",12,135,109);
             tituloCreditos = new Imagenes("/tituloCreditos.png",13,25,108);
-            tituloSalir = new Imagenes("/tituloJuego.png",14,60,185);
+            tituloSalir = new Imagenes("/tituloSalir.png",14,60,185);
 	} catch(IOException e){
             System.out.println ("");
             e.printStackTrace();
         }
-        animar = new AnimadorJuego(this);
-	animar.iniciar();
+        animador = new AnimadorJuego(this);
+	animador.iniciar();
     }
 
     public void dibujar() {
@@ -138,11 +140,11 @@ public class Menu extends GameCanvas implements Animable {
 
     public void actualizar() {
         if(juego != null) {
-            puntajes.mover(1);
-            ayuda.mover(1);
-            creditos.mover(1);
-            salir.mover(1);
-            titulo.mover(1);
+            puntajes.mover(2);
+            ayuda.mover(2);
+            creditos.mover(2);
+            salir.mover(2);
+            titulo.mover(2);
             menuPuntajes = null;
             menuAyuda = null;
             menuCreditos = null;
@@ -160,17 +162,17 @@ public class Menu extends GameCanvas implements Animable {
         }
         if(menuSalir != null) {
             menuSalir.actualizar();
-            if(menuSalir.getSalir()){
+            if(menuSalir.getSalir()) {
                 midlet.terminar();
-                animar.terminar();
-                terminar=true;
+                animador.terminar();
+                terminar = true;
             }
         }
         if(menuJuego != null) {
             menuJuego.actualizar();
-            if(menuJuego.getNuevo()) {
-                animar.terminar();
-                this.cambiar = true;
+            if(menuJuego.getBanderaLibre()) {
+                animador.terminar();
+                cambio = true;
             }
         }
         if(highLight != null) {
@@ -261,12 +263,6 @@ public class Menu extends GameCanvas implements Animable {
             }
         }
     }
-    public boolean getBandera() {
-        return bandera;
-    }
-    public void setBandera(boolean bandera) {
-        this.bandera = bandera;
-    }
 
     public void borrarTodo() {
         puntajes = null;
@@ -290,29 +286,36 @@ public class Menu extends GameCanvas implements Animable {
     public void pintar() {
         g = this.getGraphics();
         try {
-            titulo = new Imagenes("/titulo.jpg",0,33,0);
+            titulo = new Imagenes("/titulo2.png",0,33,0);
             puntajes = new Imagenes("/puntaje.jpg",1,75,125);
             ayuda = new Imagenes("/ayuda.jpg",2,75,125);
             creditos = new Imagenes("/creditos.jpg",3,75,125);
             salir = new Imagenes("/salir.jpg",4,75,125);
             juego = new Imagenes("/juego.jpg",5,75,125);
             highLight = new Imagenes("/highLight.png",5,75,125);
-            fondo = new Imagenes("/fondo.png",6,0,0);
+            fondo = new Imagenes("/fondoJuego.png",6,0,0);
             tituloJuego1 = new Imagenes("/tituloJuego.png",7,60,76);
-            tituloJuego2 = new Imagenes("/tituloCreditos.png",8,135,109);
-            tituloJuego3 = new Imagenes("/tituloCreditos.png",9,25,108);
+            tituloJuego2 = new Imagenes("/tituloNuevo.png",8,135,109);
+            tituloJuego3 = new Imagenes("/tituloNuevo.png",9,25,108);
             tituloJuego4 = new Imagenes("/tituloJuego.png",10,60,185);
-            tituloPuntajes = new Imagenes("/tituloJuego.png",11,60,76);
-            tituloAyuda = new Imagenes("/tituloCreditos.png",12,135,109);
+            tituloPuntajes = new Imagenes("/tituloPuntajes.png",11,60,76);
+            tituloAyuda = new Imagenes("/tituloAyuda.png",12,135,109);
             tituloCreditos = new Imagenes("/tituloCreditos.png",13,25,108);
-            tituloSalir = new Imagenes("/tituloJuego.png",14,60,185);
+            tituloSalir = new Imagenes("/tituloSalir.png",14,60,185);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    public boolean getCambiar() {
-        return this.cambiar;
+    public boolean getCambio() {
+        return cambio;
     }
 
+    public boolean getBandera() {
+        return bandera;
+    }
+
+    public boolean getCambio2() {
+        return cambio2;
+    }
 }

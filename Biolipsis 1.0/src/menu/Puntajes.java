@@ -1,6 +1,5 @@
 package menu;
 
-import motor.Biolipsis;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
