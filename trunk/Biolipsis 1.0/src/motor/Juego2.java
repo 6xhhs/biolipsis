@@ -7,7 +7,7 @@ import javax.microedition.lcdui.game.GameCanvas;
 import menu.Menu;
 import personajes.Heroes;
 
-public class Juego extends GameCanvas implements Animable
+public class Juego2 extends GameCanvas implements Animable
 {
     private AdministradorJuego admin;
     private AnimadorJuego animador;
@@ -21,7 +21,7 @@ public class Juego extends GameCanvas implements Animable
     private int[] secuenciaDisparo={4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7};
     private boolean banderaDisparo=false;
 
-    public Juego(Biolipsis midlet) {
+    public Juego2(Biolipsis midlet) {
 
         super(true);
         setFullScreenMode(true);

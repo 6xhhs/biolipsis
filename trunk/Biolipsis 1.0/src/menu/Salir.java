@@ -1,11 +1,10 @@
 package menu;
 
-import motor.Animable;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
 
-public class Salir extends GameCanvas implements Animable {
+public class Salir extends GameCanvas {
     public Graphics g;
     private Imagenes fondoSalir, si, no, highLight;
     private Menu menu;
@@ -15,7 +14,7 @@ public class Salir extends GameCanvas implements Animable {
 	super(true);
 	g = this.getGraphics();
         bandera = true;
-        salir=false;
+        salir = false;
         this.menu = menu;
 	try {
             fondoSalir = new Imagenes("/fondoSalir.png",18,280,0);
@@ -55,7 +54,7 @@ public class Salir extends GameCanvas implements Animable {
                 bandera = true;
             }
             if((estado & FIRE_PRESSED) !=0 && !bandera) {
-                salir=true;
+                salir = true;
                 bandera = true;
             }
         } else if(highLight.getPrioridad()==no.getPrioridad()) {

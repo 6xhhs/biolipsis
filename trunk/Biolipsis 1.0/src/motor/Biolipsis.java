@@ -1,27 +1,32 @@
 package motor;
 
-import menu.Menu;
+import javax.microedition.lcdui.Graphics;
+import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
 import javax.microedition.midlet.*;
+import menu.JuegoNuevo;
 import menu.Menu;
+import menu.ModoHistoria;
 
 public class Biolipsis extends MIDlet {
-    private Menu lienzo;
+    private Menu menu;
+    private ModoHistoria menuHistoria;
+    private JuegoNuevo nuevo;
     private Juego juego;
 
 
     public Biolipsis() {
-        lienzo = new Menu(this);
+        menu = new Menu(this);
     }
 
     public void startApp() {
-        while(lienzo.getCambiar()==false&&!lienzo.terminar) {
-            Display.getDisplay(this).setCurrent(lienzo);
+        while(menu.getCambio()==false&&!menu.terminar) {
+            Display.getDisplay(this).setCurrent(menu);
         }
-        if(lienzo.getCambiar()) {
+        if(menu.getCambio()) {
             juego = new Juego(this);
-            lienzo = null;
+            menu = null;
             ponerPantalla(juego);
         }
     }

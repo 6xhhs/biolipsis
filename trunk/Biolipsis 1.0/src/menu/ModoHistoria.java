@@ -3,26 +3,20 @@ package menu;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
-import motor.Animable;
-import motor.AnimadorJuego;
 
-public class JuegoNuevo extends GameCanvas {
+public class ModoHistoria extends GameCanvas {
     public Graphics g;
     private Imagenes fondoJuego1,fondoJuego2,fondoJuego3,
                      fondoJuego4,regresar,highLight,
                      modoHistoria,modoLibre;
-    private Menu menu;
-    private ModoHistoria menuHistoria;
-    private boolean tecla,banderaLibre,banderaHistoria;
+    private JuegoNuevo juego;
+    private boolean tecla;
 
-    public JuegoNuevo(Menu menu){
+    public ModoHistoria(JuegoNuevo juego){
 	super(true);
-        this.menu = menu;
-	g = getGraphics();
+        this.juego = juego;
+	g = super.getGraphics();
         tecla = true;
-        banderaLibre = false;
-        banderaHistoria = false;
-        menuHistoria = null;
 	try {
             fondoJuego1 = new Imagenes("/fondoJuego1.png",21,0,280);
             fondoJuego2 = new Imagenes("/fondoJuego2.png",22,-180,0);
@@ -59,10 +53,6 @@ public class JuegoNuevo extends GameCanvas {
                 highLight.dibujar(g);
             }
         }
-        if(menuHistoria != null) {
-            menuHistoria.g = this.getGraphics();
-            menuHistoria.dibujar();
-        }
 	flushGraphics();
     }
 
@@ -74,13 +64,9 @@ public class JuegoNuevo extends GameCanvas {
             fondoJuego4.mover(10);
             modoHistoria.mover(2);
             modoLibre.mover(2);
-            menuHistoria = null;
-        }
-        if(menuHistoria !=  null) {
-            menuHistoria.actualizar();
         }
 
-        int estado = menu.getKeyStates();
+        int estado = juego.getKeyStates();
         if(estado == 0) {
             tecla = false;
         }
@@ -96,9 +82,6 @@ public class JuegoNuevo extends GameCanvas {
                 tecla = true;
             }
             if((estado & FIRE_PRESSED) != 0 && !tecla) {
-                menu.pintar();
-                borrarTodo();
-                tecla = true;
             }
         } else if(highLight.getPrioridad()==modoHistoria.getPrioridad()) {
             if((estado & UP_PRESSED) != 0 && !tecla) {
@@ -107,9 +90,6 @@ public class JuegoNuevo extends GameCanvas {
                 tecla = true;
             }
             if((estado & FIRE_PRESSED) != 0 && !tecla) {
-                menuHistoria = new ModoHistoria(this);
-                borrarTodo();
-                tecla = true;
             }
         } else if(highLight.getPrioridad()==modoLibre.getPrioridad()) {
             if((estado & DOWN_PRESSED) != 0 && !tecla) {
@@ -118,9 +98,6 @@ public class JuegoNuevo extends GameCanvas {
                 tecla = true;
             }
             if((estado & FIRE_PRESSED) != 0 && !tecla) {
-                banderaLibre = true;
-                borrarTodo();
-                tecla = true;
             }
         }
     }
@@ -151,13 +128,7 @@ public class JuegoNuevo extends GameCanvas {
             e.printStackTrace();
         }
     }
-    public boolean getTecla() {
-        return tecla;
-    }
-    public boolean getBanderaLibre() {
-        return banderaLibre;
-    }
-    public boolean getBanderaHistoria() {
-        return banderaHistoria;
+    public Graphics getGraphics() {
+        return g;
     }
 }
