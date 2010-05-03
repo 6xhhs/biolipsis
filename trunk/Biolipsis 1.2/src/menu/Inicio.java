@@ -4,6 +4,7 @@ import imagenes.Imagenes;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
+import motor.Biolipsis;
 
 public class Inicio extends GameCanvas {
     public Graphics g;
@@ -14,8 +15,9 @@ public class Inicio extends GameCanvas {
     private JuegoNuevo juego;
     private SeleccionPersonaje seleccion;
     private boolean tecla;
+    private Biolipsis midlet;
 
-    public Inicio(Menu menu){
+    public Inicio(Menu menu) {
 	super(true);
         setFullScreenMode(true);
         this.menu = menu;
@@ -24,6 +26,12 @@ public class Inicio extends GameCanvas {
         juego = null;
         seleccion = null;
         crearImagenes();
+        if(!midlet.estaReproduciendo())
+            try {
+            midlet.reproducir("Menu.mid");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void dibujar() {

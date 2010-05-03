@@ -1,13 +1,13 @@
 package motor;
 
-import elementos.AnimalCinco;
+//import elementos.AnimalCinco;
 import java.util.Random;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
 import menu.Menu;
 import personajes.Enemigos;
 import personajes.Heroes;
-import personajes.ZombieMoviles;
+//import personajes.ZombieMoviles;
 
 public class Juego extends GameCanvas implements Animable {
 
@@ -32,7 +32,7 @@ public class Juego extends GameCanvas implements Animable {
     private Menu menu;
     private Random random;
 
-    public Juego(Biolipsis midlet, boolean seleccionPersonaje) {
+    public Juego(Biolipsis midlet, boolean seleccionPersonaje) throws Exception {
 
         super(true);
         setFullScreenMode(true);
@@ -40,6 +40,9 @@ public class Juego extends GameCanvas implements Animable {
         ANCHO = getWidth();
         ALTO = getHeight();
         this.midlet = midlet;
+        if(!midlet.estaReproduciendo()){
+            midlet.reproducir("Menu.mid");
+        }
         banderaMovimientoZombie = false;
         banderaColisionDano = false;
         banderaDireccion=false;
