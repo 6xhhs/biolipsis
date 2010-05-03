@@ -26,7 +26,7 @@ public class Menu extends GameCanvas implements Animable {
     private boolean seleccionPersonaje;
     private boolean inicioJuego;
 
-    public Menu(Biolipsis midlet){
+    public Menu(Biolipsis midlet) throws Exception{
 	super(true);
 	this.midlet = midlet;
 	g = this.getGraphics();
@@ -43,12 +43,16 @@ public class Menu extends GameCanvas implements Animable {
         crearImagenes();
 	try {
             logoTec = new Imagenes("/logoTec.jpg",0,0,0);
+            if(!midlet.estaReproduciendo())
+                midlet.reproducir("Menu.mid");
+            
 	} catch(IOException e){
             System.out.println ("");
             e.printStackTrace();
         }
         animador = new AnimadorJuego(this);
 	animador.iniciar();
+
     }
 
     public void dibujarLogoTec() {
