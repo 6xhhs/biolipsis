@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class SeleccionDeNivel extends GameCanvas {
     /**
-     *
+     * Elementos que permiten darle animacion al menu de seleccion de nivel
      */
     public Graphics g;
     private Imagenes fondo,regresar,highLight,
@@ -23,9 +23,10 @@ public class SeleccionDeNivel extends GameCanvas {
 
     /**
      *
-     * @param menu
-     * @param seleccion
-     * @param inicio
+     * @param menu Para poder hacer uso del teclado
+     * @param seleccion Para poder regresar al menu de seleccion de personaje
+     * @param inicio Para poder regresar al menu de inicio dependiendo en que lugar
+     * se encuentre
      */
     public SeleccionDeNivel(Menu menu, SeleccionPersonaje seleccion, Inicio inicio){
 	super(true);
@@ -47,7 +48,7 @@ public class SeleccionDeNivel extends GameCanvas {
     }
 
     /**
-     *
+     * Permite estar dibujando constantemente los elementos de este menu
      */
     public void dibujar() {
         if(fondo != null) {
@@ -62,7 +63,7 @@ public class SeleccionDeNivel extends GameCanvas {
     }
 
     /**
-     *
+     * Se encarga del manejo del teclado
      */
     public void actualizar() {
         if (highLight != null) {
@@ -126,7 +127,7 @@ public class SeleccionDeNivel extends GameCanvas {
     }
 
     /**
-     *
+     * Apunta todo a null cuando se dejan de utilizar los elementos de este nivel
      */
     public void borrarTodo() {
         fondo = null;
@@ -138,7 +139,7 @@ public class SeleccionDeNivel extends GameCanvas {
     }
 
     /**
-     *
+     * Permite crear las imagenes que se requieren en este nivel
      */
     public void pintar() {
         try {

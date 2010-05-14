@@ -8,8 +8,8 @@ import motor.Juego;
 public class Zombieflu extends Enemigos implements ZombieMoviles {
 
     private static final String archivito = "/mujerZombie.png";
-    private static int vida=1;
-    private static final int vidatotal=1;
+    private static int VIDA = 1;
+    private static final int VIDA_TOTAL = 1;
     public boolean banderaMorir;
 
     public Zombieflu() throws IOException {
@@ -24,19 +24,19 @@ public class Zombieflu extends Enemigos implements ZombieMoviles {
         if (!banderaMorir) {
             setPosition(x, y);
             nextFrame();
-            moverX(-velocidad);
+            moverX(-VELOCIDAD/2);
         }        
     }
 
     public void calcularDanio(){
-        vida=vida-1;
-        if(vida <= 0) {
+        VIDA=VIDA-1;
+        if(VIDA <= 0) {
             banderaMorir = true;
         }
     }
 
     public void estado(Juego juego, AdministradorJuego admin) {
-        if(getX()<(admin.getDesplazamiento()-ancho)) {
+        if(getX()<(admin.getDesplazamiento()-ANCHO)) {
             setPosition(admin.getDesplazamiento()+(juego.ANCHO*2),getY());
         }
         if(banderaMorir) {
@@ -49,11 +49,11 @@ public class Zombieflu extends Enemigos implements ZombieMoviles {
     }
 
     public int getVida() {
-        return vida;
+        return VIDA;
     }
 
     public void restaurarVida(){
-        vida=vidatotal;
+        VIDA=VIDA_TOTAL;
     }
 
     public void setBanderaMorir(boolean banderaMorir) {

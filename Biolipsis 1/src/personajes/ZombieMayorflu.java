@@ -18,7 +18,7 @@ public class ZombieMayorflu extends Enemigos implements ZombieMoviles {
         banderaMorir = false;
     }
 
-    public void mover(Juego juego, MapaNivel2y3 mapa2y3 /*MapaNivel1 mapa1*/, Heroes personaje) {
+    public void mover(Juego juego, MapaNivel2y3 mapa2y3, Heroes personaje) {
         int x = getX();
         int y = getY();
 
@@ -28,22 +28,22 @@ public class ZombieMayorflu extends Enemigos implements ZombieMoviles {
                 setPosition(x, y);
             }
             if (personaje.getX() < getX()) {
-                setTransform(TRANS_NONE);
-                setPosition(x, y);
-                moverX(-velocidad);
-            }
-            if (personaje.getX() > getX()) {
                 setTransform(TRANS_MIRROR);
                 setPosition(x, y);
-                moverX(velocidad);
+                moverX(-VELOCIDAD/2);
+            }
+            if (personaje.getX() > getX()) {
+                setTransform(TRANS_NONE);
+                setPosition(x, y);
+                moverX(VELOCIDAD/2);
             }
             if (personaje.getY() < getY()) {
                 setPosition(x, y);
-                moverY(-velocidad);
+                moverY(-VELOCIDAD/2);
             }
             if (personaje.getY() > getY()) {
                 setPosition(x, y);
-                moverY(velocidad);
+                moverY(VELOCIDAD/2);
             }
         }
     }
@@ -56,7 +56,7 @@ public class ZombieMayorflu extends Enemigos implements ZombieMoviles {
     }
 
     public void estado(Juego juego, AdministradorJuego admin) {
-        if(getX()<(admin.getDesplazamiento()-ancho)) {
+        if(getX()<(admin.getDesplazamiento()-ANCHO)) {
             setPosition(admin.getDesplazamiento()+(juego.ANCHO*2),getY());
         }
         if (banderaMorir) {

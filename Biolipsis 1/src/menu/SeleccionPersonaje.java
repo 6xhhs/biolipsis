@@ -4,7 +4,6 @@ import imagenes.Imagenes;
 import java.io.IOException;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.game.GameCanvas;
-import motor.Biolipsis;
 
 /**
  *
@@ -12,7 +11,7 @@ import motor.Biolipsis;
  */
 public class SeleccionPersonaje extends GameCanvas {
     /**
-     *
+     * Elementos que permiten animar al menu de seleccion de personaje
      */
     public Graphics g;
     private Imagenes fondo,regresar,highLight,highLight2,
@@ -21,14 +20,13 @@ public class SeleccionPersonaje extends GameCanvas {
     private Menu menu;
     private JuegoNuevo juegoNuevo;
     private Inicio inicio;
-    private Biolipsis midlet;
     private boolean tecla, iniciarJuego;
 
     /**
      *
-     * @param menu
-     * @param juegoNuevo
-     * @param inicio
+     * @param menu Permite el manejo del teclado
+     * @param juegoNuevo Permite regresar al menu de juego nuevo si se vino desde ahi
+     * @param inicio Permite regresar al menu de inicio si se vino desde ahi
      */
     public SeleccionPersonaje(Menu menu,JuegoNuevo juegoNuevo, Inicio inicio){
 	super(true);
@@ -43,7 +41,7 @@ public class SeleccionPersonaje extends GameCanvas {
     }
 
     /**
-     *
+     * Permite dibujar constantemente a los elementos del menu de seleccion de personaje
      */
     public void dibujar() {
         if(fondo != null) {
@@ -66,7 +64,7 @@ public class SeleccionPersonaje extends GameCanvas {
     }
 
     /**
-     *
+     * Permite el manejo del teclado de este menu
      */
     public void actualizar() {
         if(nivel != null) {
@@ -140,7 +138,7 @@ public class SeleccionPersonaje extends GameCanvas {
     }
 
     /**
-     *
+     * Apunta a null todos los elementos cuando se han dejado de utilizar
      */
     public void borrarTodo() {
         fondo = null;
@@ -152,7 +150,7 @@ public class SeleccionPersonaje extends GameCanvas {
     }
 
     /**
-     *
+     * Permite crear las imagenes de este menu
      */
     public void crearImagenes() {
         try {
@@ -169,7 +167,7 @@ public class SeleccionPersonaje extends GameCanvas {
 
     /**
      *
-     * @return
+     * @return Para poder iniciar el juego
      */
     public boolean isIniciarJuego() {
         return iniciarJuego;
@@ -177,7 +175,7 @@ public class SeleccionPersonaje extends GameCanvas {
 
     /**
      *
-     * @param iniciarJuego
+     * @param iniciarJuego Para poder cambiar la bandera de inicio de juego
      */
     public void setIniciarJuego(boolean iniciarJuego) {
         this.iniciarJuego = iniciarJuego;

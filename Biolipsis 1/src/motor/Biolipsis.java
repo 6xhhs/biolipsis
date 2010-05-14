@@ -24,7 +24,7 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @throws Exception
+     * @throws Exception En caso de que la musica que se esta tocando no se encuentre
      */
     public Biolipsis() throws Exception {
         musica = new Musica();
@@ -34,7 +34,7 @@ public class Biolipsis extends MIDlet {
     }
 
     /**
-     *
+     * Inicia la aplicacion en el celular
      */
     public void startApp() {
         while(menu.getCambio()==false&&!menu.terminar) {
@@ -55,11 +55,12 @@ public class Biolipsis extends MIDlet {
      *
      */
     public void pauseApp() {
+
     }
 
     /**
      *
-     * @param nuevo
+     * @param nuevo Pone la pantalla actual en el celular
      */
     public void ponerPantalla(Displayable nuevo) {
         Display.getDisplay(this).setCurrent(nuevo);
@@ -67,13 +68,13 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @param unconditional
+     * @param unconditional Permite indicar si la aplicacion se ha finalizado
      */
     public void destroyApp(boolean unconditional) {
     }
 
     /**
-     *
+     * Metodo que termina de correr el juego en el celular
      */
     public void terminar() {
         destroyApp(true);
@@ -82,8 +83,8 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @param archivo
-     * @throws Exception
+     * @param archivo Recibe este parametro para poder guardar los datos como puntajes y nivel de un usuario
+     * @throws Exception En caso de que no se pudiera reproducir la musica, se lanza esta excepcion
      */
     public void reproducir(String archivo) throws Exception {
         if (musica != null) {
@@ -95,8 +96,8 @@ public class Biolipsis extends MIDlet {
     }
     /**
      *
-     * @param archivo
-     * @throws Exception
+     * @param archivo Recibe este parametro para poder guardar los datos como puntajes y nivel de un usuario
+     * @throws Exception En caso de que no se pudiera reproducir la musica, se lanza esta excepcion
      */
     public void reproducir2(String archivo) throws Exception {
         if (musica != null) {
@@ -108,7 +109,7 @@ public class Biolipsis extends MIDlet {
     }
 
     /**
-     *
+     * Pausa la musica cuando el menu de pausa se manda a llamar
      */
     public void pausarMusica() {
         try {
@@ -119,13 +120,13 @@ public class Biolipsis extends MIDlet {
     }
 
     /**
-     *
+     * Detiene la musica por completo
      */
     public void detenerMusica(){
         musica.detenerMusica();
     }
     /**
-     *
+     * Pausa la musica por complemto
      */
     public void detenerMusica2() {
         musica.detenerMusica2();
@@ -133,13 +134,13 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @return
+     * @return Cuando la musica se esta reproduciendo en el celular
      */
     public boolean estaReproduciendo() {
         return this.musica.getReproduciendo();
     }
     /**
-     *
+     * Permite hacer el cambio de musica cuando se ha cambiado de nivel
      */
     public void cambioDeNivel() {
         musica = new Musica();
@@ -147,7 +148,8 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @throws IOException
+     * @throws IOException Se lanza esta excepcion en caso de que no se haya
+     * reproducido la musica deseada
      */
     public void reiniciar() throws IOException {
         int n = juego.getHighscores();
@@ -169,7 +171,7 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @throws IOException
+     * @throws IOException Se lanza esta excepcion en caso de que no se pudiera reproducir la musica
      */
     public void reiniciarDesdePausa()throws IOException{
         juego = null;
@@ -184,8 +186,9 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @param data
-     * @throws IOException
+     * @param data Se recibe este parametro para poder guardar la informacion de los puntajes
+     * @throws IOException En caso de que no se pudiera hacer la escritura de los datos se lanza
+     * esta excepcion
      */
     public void escrituraScores(byte[] data) throws IOException {
         this.archivos = (FileConnection) Connector.open(Menu.archivoScores, Connector.READ_WRITE);
@@ -201,7 +204,7 @@ public class Biolipsis extends MIDlet {
 
     /**
      *
-     * @param datos
+     * @param datos Para poder guardar la informacion de los datos
      */
     public void pausa(String datos) {
         pausa = new Pausa(juego, this, datos);
@@ -209,7 +212,7 @@ public class Biolipsis extends MIDlet {
     }
 
     /**
-     *
+     * Permite regresar la musicar al momento preciso en el que se pauso con anterioridad
      */
     public void despausa() {
         Display.getDisplay(this).setCurrent(juego);
