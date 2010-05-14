@@ -48,6 +48,7 @@ import personajes.Maryflu;
 import personajes.ZombieMayorflu;
 import personajes.ZombieMoviles;
 import personajes.Zombieflu;
+import personajes.Zombielipsis;
 
 /**
  *
@@ -61,7 +62,7 @@ public class AdministradorJuego extends LayerManager {
     MapaNivel2y3 mapa2y3;
     MapaNivel1 mapa1;
     Virus virus, virus1, virus2;
-    ZombieMoviles zombie1, zombie2, zombie3, zombie4;
+    ZombieMoviles zombie1, zombie2, zombie3;
     PistolaJeringa bala;
     Bomba bombaDeflu;
     BarraVida barraVida;
@@ -106,10 +107,10 @@ public class AdministradorJuego extends LayerManager {
 
     /**
      *
-     * @param ancho
-     * @param alto
-     * @param seleccionPersonaje
-     * @param nivel
+     * @param ancho El ancho de la pantalla de celular
+     * @param alto El alto de la pantalla del celular
+     * @param seleccionPersonaje Para poder indicarle al menu de seleccion de personaje que personaje se creo
+     * @param nivel Indica al menu de seleccion de nivel, que nivel fue el que se selecciono
      */
     public AdministradorJuego(int ancho, int alto, boolean seleccionPersonaje, int nivel) {
         this.nivel = nivel;
@@ -256,7 +257,7 @@ public class AdministradorJuego extends LayerManager {
                 case 3:
                     zombie1 = new ZombieMayorflu();
                     zombie2 = new Zombieflu();
-                    zombie3 = new ZombieMayorflu();
+                    zombie3 = new Zombielipsis();
                     vida = new Vida();
                     bala = new PistolaJeringa();
                     bombaDeflu = new Bomba();
@@ -308,7 +309,7 @@ public class AdministradorJuego extends LayerManager {
                     zombie2.setPosition(270, 120);
                     zombie2.setTransform(Enemigos.TRANS_MIRROR);
                     zombie3.setPosition(320, 140);
-                    zombie3.setTransform(Enemigos.TRANS_MIRROR);
+                    zombie3.setTransform(Enemigos.TRANS_NONE);
                     rayo.setPosition(-50, -52);
                     rayo1.setPosition(-50, -2);
                     persona.setPosition(200, 140);
@@ -322,64 +323,39 @@ public class AdministradorJuego extends LayerManager {
                     barraVida.setPosition(desplazamiento+(ANCHO/2), 5);
                     break;
             }
-            // Elemetos presentes en todos los niveles
-
-            // Elementos del nivel 1
-
-            // Elementos del nivel 2
-
-            // Elementos del nivel 3
-            
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        // Elementos para tods los niveles
-        
-        // Nivel 1
-
-        // Nivel 2
-
-        // Nivel 3
-        
-        // Elementos para todos los niveles
-
-        // Nivel 1
-        
-        // Nivel 2
-        
-        // Nivel 3
-        
     }
 
     /**
      *
-     * @param g
+     * @param g Recibe al objeto de tipo Graphics para poder dibujar el fondo de cada menu
      */
     public void dibujar(Graphics g) {
         desplazamiento = 0;
         switch(this.nivel) {
             case 1:
-                if (personaje.getX() > ANCHO / 4) { // la mitad de la pantalla
+                if (personaje.getX() > ANCHO / 4) { 
                     this.desplazamiento = personaje.getX() - ANCHO / 4;
                 }
-                if (personaje.getX() > mapa1.getWidth() - (ANCHO*3) / 4) { // ultima mitad
+                if (personaje.getX() > mapa1.getWidth() - (ANCHO*3) / 4) {
                     this.desplazamiento = mapa1.getWidth() - ANCHO;
                 }
                 break;
             case 2:
-                if (personaje.getX() > ANCHO / 4) { // la mitad de la pantalla
+                if (personaje.getX() > ANCHO / 4) { 
                     this.desplazamiento = personaje.getX() - ANCHO / 4;
                 }
-                if (personaje.getX() > mapa2y3.getWidth() - (ANCHO*3) / 4) { // ultima mitad
+                if (personaje.getX() > mapa2y3.getWidth() - (ANCHO*3) / 4) {
                     this.desplazamiento = mapa2y3.getWidth() - ANCHO;
                 }
                 break;
             case 3:
-                if (personaje.getX() > ANCHO / 4) { // la mitad de la pantalla
+                if (personaje.getX() > ANCHO / 4) {
                     this.desplazamiento = personaje.getX() - ANCHO / 4;
                 }
-                if (personaje.getX() > mapa2y3.getWidth() - (ANCHO*3) / 4) { // ultima mitad
+                if (personaje.getX() > mapa2y3.getWidth() - (ANCHO*3) / 4) { 
                     this.desplazamiento = mapa2y3.getWidth() - ANCHO;
                 }
                 break;
@@ -392,7 +368,7 @@ public class AdministradorJuego extends LayerManager {
 
     /**
      *
-     * @return
+     * @return regreza el desplazamento que se esta haciendo conforme el personaje va avanzando
      */
     public int getDesplazamiento() {
         return desplazamiento;

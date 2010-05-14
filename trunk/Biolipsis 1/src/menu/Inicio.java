@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class Inicio extends GameCanvas {
     /**
-     *
+     *Elementos que permiten animar al menu de inicio
      */
     public Graphics g;
     private Imagenes fondoInicio1,fondoInicio2,fondoInicio3,
@@ -25,7 +25,7 @@ public class Inicio extends GameCanvas {
 
     /**
      *
-     * @param menu
+     * @param menu Recibe este parametro para poder manejar el teclado
      */
     public Inicio(Menu menu){
 	super(true);
@@ -39,7 +39,7 @@ public class Inicio extends GameCanvas {
     }
 
     /**
-     *
+     *Permite estar dibujando constantemente las imagenes del menu de inicio
      */
     public void dibujar() {
         
@@ -79,7 +79,9 @@ public class Inicio extends GameCanvas {
 
     /**
      *
-     * @throws Exception
+     * @throws Exception Arroja una excepcion cuando las imagenes que se utilizan
+     * no se logran encontrar
+     * Tambien permite el manejo del teclado en el celular
      */
     public void actualizar() throws Exception {
         if(fondoInicio1 != null) {
@@ -146,7 +148,7 @@ public class Inicio extends GameCanvas {
     }
 
     /**
-     *
+     *Apunta todo a null cuando el menu de inicio no se esta utilizando
      */
     public void borrarTodo() {
         fondoInicio1 = null;
@@ -160,7 +162,7 @@ public class Inicio extends GameCanvas {
     }
 
     /**
-     *
+     *Permite la creacion de las imagenes del menu de inicio
      */
     public void crearImagenes() {
         try {

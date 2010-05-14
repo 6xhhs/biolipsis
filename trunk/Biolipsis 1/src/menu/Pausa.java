@@ -18,12 +18,10 @@ import motor.Juego;
  */
 public class Pausa extends GameCanvas implements Animable{
     /**
-     *
+     * Elementos que permiten darle una animacion al menu de pausa
      */
     public Graphics g;
     private boolean tecla;
-    private int ANCHO;
-    private int ALTO;
     private AnimadorJuego animador;
     private Juego juego;
     private Biolipsis midlet;
@@ -33,17 +31,15 @@ public class Pausa extends GameCanvas implements Animable{
 
     /**
      *
-     * @param juego
-     * @param midlet
-     * @param datos
+     * @param juego Recibe este parametro para poder iniciar la pausa en el juego
+     * @param midlet Para poder pausar el juego cuando exista algun evento del SO
+     * @param datos Permite salvar los datos como son nivel y puntaje del usuario
      */
     public Pausa(Juego juego, Biolipsis midlet, String datos){
         super(true);
         setFullScreenMode(true);
         this.juego=juego;
         this.midlet=midlet;
-        ANCHO=getWidth();
-        ALTO=getHeight();
         g=getGraphics();
         tecla=false;
         this.datos=datos;
@@ -63,7 +59,7 @@ public class Pausa extends GameCanvas implements Animable{
     }
 
     /**
-     *
+     * Permite estar dibujando constantemente los elementos del menu
      */
     public void dibujar() {
         if(fondo != null) {
@@ -78,7 +74,7 @@ public class Pausa extends GameCanvas implements Animable{
     }
 
     /**
-     *
+     * Permite el manejo del teclado en este menu
      */
     public void actualizar() {
         if (highLight != null) {
@@ -156,7 +152,7 @@ public class Pausa extends GameCanvas implements Animable{
 
     /**
      *
-     * @throws IOException
+     * @throws IOException Lanza una excepcion en caso de no poder guardar ningun dato
      */
     public void escrituraJuego() throws IOException {
         byte[] data=this.datos.getBytes();

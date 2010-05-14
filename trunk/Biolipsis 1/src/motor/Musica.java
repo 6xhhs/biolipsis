@@ -14,7 +14,7 @@ public class Musica {
     private boolean reproduciendo;
 
     /**
-     *
+     * Bandera que indicia cuando la musica se esta o no reproduciendo
      */
     public Musica(){
         reproduciendo = false;
@@ -22,7 +22,7 @@ public class Musica {
 
     /**
      *
-     * @param archivo
+     * @param archivo Recibe este parametro para indicar cual es el archivo que se leera
      */
     public void reproducir(String archivo){
         try {
@@ -37,7 +37,6 @@ public class Musica {
              player.realize();
              player.prefetch();
              player.start();
-            //player.setLoopCount(5); Reproducir n cantidad de veces
              reproduciendo = true;
          }catch(Exception e){
              e.printStackTrace();
@@ -46,7 +45,7 @@ public class Musica {
 
     /**
      *
-     * @param archivo
+     * @param archivo Recibe este parametro para indicar cual es el archivo que se leera
      */
     public void reproducir2(String archivo){
         try {
@@ -61,7 +60,6 @@ public class Musica {
              player2.realize();
              player2.prefetch();
              player2.start();
-            //player.setLoopCount(5); Reproducir n cantidad de veces
              reproduciendo = true;
          }catch(Exception e){
              e.printStackTrace();
@@ -69,7 +67,7 @@ public class Musica {
     }
 
     /**
-     *
+     * Metodo que permite detener la musica que se esta reproduciendo
      */
     public void detenerMusica(){
         try {
@@ -83,7 +81,7 @@ public class Musica {
     }
 
     /**
-     *
+     * Metodo que permite detener la musica que se esta reproduciendo
      */
     public void detenerMusica2() {
         try {
@@ -97,8 +95,8 @@ public class Musica {
     }
     /**
      *
-     * @return
-     * @throws MediaException
+     * @return Regresa el segundo exacto en el que se detuvo la musica
+     * @throws MediaException Si la musica no se logra reproducir
      */
     public long pausar() throws MediaException{
         long tiempo = player.getMediaTime();
@@ -108,7 +106,7 @@ public class Musica {
 
     /**
      *
-     * @param tiempo
+     * @param tiempo Regresa el tiempo exacto en el que se dejo de reproducir la musica
      */
     public void reanudar(long tiempo){
         try {
@@ -123,7 +121,7 @@ public class Musica {
 
     /**
      *
-     * @return
+     * @return Regresa la bandera que indica si la musica se estaba reproduciendo
      */
     public boolean getReproduciendo(){
         return reproduciendo;

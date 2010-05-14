@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class Ayuda extends GameCanvas {
     /**
-     *
+     * Elementos que permiten animar al menu de ayuda
      */
     public Graphics g;
     private Imagenes ayuda1, ayuda2, ayuda3, ayuda4, ayuda5;
@@ -22,7 +22,7 @@ public class Ayuda extends GameCanvas {
 
     /**
      *
-     * @param menu
+     * @param menu Recibe como parametro al menu para poder hacer uso del teclado
      */
     public Ayuda(Menu menu){
 	super(true);
@@ -49,7 +49,7 @@ public class Ayuda extends GameCanvas {
     }
 
     /**
-     *
+     * Permite estar dibujando constantemente al menu de ayuda
      */
     public void dibujar() {
         try{
@@ -62,7 +62,7 @@ public class Ayuda extends GameCanvas {
 
     /**
      *
-     * @throws Exception
+     * @throws Exception Si las imagenes no se llegaran a encontrar se arroja esta excepcion
      */
     public void actualizar() throws Exception {
         ayuda1.mover(8);
@@ -82,13 +82,5 @@ public class Ayuda extends GameCanvas {
             menu.crearImagenes();
             bandera = true;
         }
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean getBandera() {
-        return bandera;
     }
 }

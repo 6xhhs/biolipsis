@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class Salir extends GameCanvas {
     /**
-     *
+     * Elementos que permiten darle vida a nuestro menu de salir
      */
     public Graphics g;
     private Imagenes fondoSalir, si, no, highLight,
@@ -21,7 +21,7 @@ public class Salir extends GameCanvas {
 
     /**
      *
-     * @param menu
+     * @param menu Recibe como parametro al menu para poder hacer uso del teclado
      */
     public Salir(Menu menu) {
 	super(true);
@@ -43,7 +43,7 @@ public class Salir extends GameCanvas {
     }
 
     /**
-     *
+     * Permite estar dibujando constantemente a los elementos del menu de salir
      */
     public void dibujar() {
         fondoSalir.dibujar(g);
@@ -59,7 +59,9 @@ public class Salir extends GameCanvas {
 
     /**
      *
-     * @throws Exception
+     * @throws Exception En caso de que no se pudieran encontrar las imagenes de este
+     * menu, se lanza esta excepcion
+     * Se encarga de igual forma del manejo del teclado
      */
     public void actualizar() throws Exception {
         fondoSalir.mover(8);
@@ -95,7 +97,8 @@ public class Salir extends GameCanvas {
 
     /**
      *
-     * @return
+     * @return Permite auxiliar al menu para que cuando el usuario desee
+     * salir de la aplicacion pueda hacerlo
      */
     public boolean getSalir() {
         return salir;

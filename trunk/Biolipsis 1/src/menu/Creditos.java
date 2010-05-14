@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class Creditos extends GameCanvas {
     /**
-     *
+     * Elementos que permiten animar al menu de creditos
      */
     public Graphics g;
     private Imagenes credito,credito1,credito2,credito3,credito4,credito5;
@@ -22,7 +22,7 @@ public class Creditos extends GameCanvas {
 
     /**
      *
-     * @param menu
+     * @param menu Recibe como parametro al menu para poder hacer uso del teclado
      */
     public Creditos(Menu menu){
 	super(true);
@@ -42,7 +42,7 @@ public class Creditos extends GameCanvas {
     }
 
     /**
-     *
+     * Permite estar dibujando constantemente al menu de ayuda
      */
     public void dibujar() {
         try{
@@ -75,17 +75,8 @@ public class Creditos extends GameCanvas {
             bandera = true;
         }
     }
-
     /**
-     *
-     * @return
-     */
-    public boolean getBandera() {
-        return bandera;
-    }
-
-    /**
-     *
+     *Permite la creacion de las imagenes del menu de creditos
      */
     public void crearImagenes() {
         try {

@@ -122,7 +122,7 @@ public class Juego extends GameCanvas implements Animable {
         nivelGanado.dibujar(g);
         if(!midlet.estaReproduciendo()) {
             try {
-                midlet.reproducir2("/zombieMuerto.wav");
+                midlet.reproducir2("/youWin.wav");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -137,7 +137,7 @@ public class Juego extends GameCanvas implements Animable {
         nivelGanado2.dibujar(g);
         if(!midlet.estaReproduciendo()) {
             try {
-                midlet.reproducir2("/zombieMuerto.wav");
+                midlet.reproducir2("/youWin.wav");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -152,7 +152,7 @@ public class Juego extends GameCanvas implements Animable {
         nivelGanado3.dibujar(g);
         if(!midlet.estaReproduciendo()) {
             try {
-                midlet.reproducir2("/zombieMuerto.wav");
+                midlet.reproducir2("/youWin.wav");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -167,7 +167,7 @@ public class Juego extends GameCanvas implements Animable {
         admin.dibujar(g);
         g.setColor(0xB40404);
         g.drawString("Vida: ", ANCHO / 12, 0, Graphics.TOP | Graphics.LEFT);
-        g.drawString("Puntaje "+this.highscores, ANCHO / 2, 0, Graphics.TOP | Graphics.LEFT);
+        g.drawString("Puntaje: "+this.highscores, ANCHO / 2, 0, Graphics.TOP | Graphics.LEFT);
         flushGraphics();
     }
 
@@ -679,9 +679,9 @@ public class Juego extends GameCanvas implements Animable {
     public void cambioNivel() throws InterruptedException{
         this.nivel++;
         if(this.nivel>3){
-            this.dibujarNivelGanado3();
             midlet.detenerMusica();
-            Thread.sleep(7000);
+             this.dibujarNivelGanado3();
+            Thread.sleep(9000);
             try {
                 midlet.reiniciar();
             } catch (IOException ex) {
@@ -692,14 +692,14 @@ public class Juego extends GameCanvas implements Animable {
             midlet.detenerMusica();
             admin=null;
             this.dibujarNivelGanado();
-            Thread.sleep(7000);
+            Thread.sleep(9000);
             midlet.cambioDeNivel();
         }
         if(this.nivel==3) {
             midlet.detenerMusica();
             admin=null;
             this.dibujarNivelGanado2();
-            Thread.sleep(7000);
+            Thread.sleep(9000);
             midlet.cambioDeNivel();
         }
         try {

@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class JuegoNuevo extends GameCanvas {
     /**
-     *
+     * Elementos que permiten poder animar al menu de juego nuevo
      */
     public Graphics g;
     private Imagenes fondoJuego1,fondoJuego2,regresar,
@@ -23,8 +23,9 @@ public class JuegoNuevo extends GameCanvas {
 
     /**
      *
-     * @param menu
-     * @param inicio
+     * @param menu Recibe este parametro para poder hacer uso del teclado
+     * @param inicio Recibe este parametro para poder hacer un regreso al menu de inicio
+     * si se encuentra en la seleccion de personaje
      */
     public JuegoNuevo(Menu menu, Inicio inicio){
 	super(true);
@@ -38,7 +39,7 @@ public class JuegoNuevo extends GameCanvas {
     }
 
     /**
-     *
+     * Permite esta dibujando constantemente a los elementos del menu de juego nuevo
      */
     public void dibujar() {
         if(fondoJuego1 != null) {
@@ -70,7 +71,7 @@ public class JuegoNuevo extends GameCanvas {
     }
 
     /**
-     *
+     * Permite el manejo del teclado en este menu
      */
     public void actualizar() {
         if(fondoJuego1 != null) {
@@ -137,7 +138,7 @@ public class JuegoNuevo extends GameCanvas {
     }
 
     /**
-     *
+     * Apunta todo a null cuando no se esta utilizando ninguna imagen de este menu
      */
     public void borrarTodo() {
         fondoJuego1 = null;
@@ -149,7 +150,7 @@ public class JuegoNuevo extends GameCanvas {
     }
 
     /**
-     *
+     * Crea las imagenes necesarias para este menu
      */
     public void crearImagenes() {
         try {

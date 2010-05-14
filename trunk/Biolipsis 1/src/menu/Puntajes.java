@@ -11,7 +11,7 @@ import javax.microedition.lcdui.game.GameCanvas;
  */
 public class Puntajes extends GameCanvas {
     /**
-     *
+     * Elementos que permiten darle animacion al menu de puntajes
      */
     public Graphics g;
     private Imagenes fondoPuntajes;
@@ -21,7 +21,7 @@ public class Puntajes extends GameCanvas {
 
     /**
      *Se utiliza el teclado desde menu
-     * @param menu
+     * @param menu 
      * @param highScores
      */
     public Puntajes(Menu menu, String highScores){
@@ -44,10 +44,12 @@ public class Puntajes extends GameCanvas {
     public void dibujar() {
         fondoPuntajes.dibujar(g);
         g.setColor(0xFFFFFF);
-        g.drawString("PUNTAJES ALTOS", 30, 0, Graphics.TOP | Graphics.LEFT);
-        g.drawString("1 puntaje mayor: " + highScores, 0, 30, Graphics.TOP | Graphics.LEFT);
-        g.drawString("2 puntaje mayor: 120", 0, 60, Graphics.TOP | Graphics.LEFT);
-        g.drawString("3 puntaje mayor: 50", 0, 90, Graphics.TOP | Graphics.LEFT);
+        if(fondoPuntajes.getY()<=-1) {
+            g.drawString("PUNTAJES ALTOS", 30, 0, Graphics.TOP | Graphics.LEFT);
+            g.drawString("1 puntaje mayor: " + highScores, 0, 30, Graphics.TOP | Graphics.LEFT);
+            g.drawString("2 puntaje mayor: 0", 0, 60, Graphics.TOP | Graphics.LEFT);
+            g.drawString("3 puntaje mayor: 0", 0, 90, Graphics.TOP | Graphics.LEFT);
+        }
 	flushGraphics();
     }
 
