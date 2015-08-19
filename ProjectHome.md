@@ -1,0 +1,1 @@
+Biolipsis es una aplicación esta diseñada principalmente para un celular Sony Ericsson Modelo W610. Es un juego de tipo adventure cuyo tema esta basado en la Influenza, cuenta con tres niveles en los que el objetivo es destruir a los virus que estan atacando a la humanidad.
